@@ -39,17 +39,17 @@ pub async fn move_player(
 ) {
     let mut game_state = game_state.lock().await;
 
-    if p1_up_button.is_high().unwrap() {
+    if p1_up_button.is_high().unwrap_or(false) {
         game_state.player_1.bar.position_y = (game_state.player_1.bar.position_y - 2).clamp(10, 54);
     }
-    if p1_down_button.is_high().unwrap() {
+    if p1_down_button.is_high().unwrap_or(false) {
         game_state.player_1.bar.position_y = (game_state.player_1.bar.position_y + 2).clamp(10, 54);
     }
 
-    if p2_up_button.is_high().unwrap() {
+    if p2_up_button.is_high().unwrap_or(false) {
         game_state.player_2.bar.position_y = (game_state.player_2.bar.position_y - 2).clamp(10, 54);
     }
-    if p2_down_button.is_high().unwrap() {
+    if p2_down_button.is_high().unwrap_or(false) {
         game_state.player_2.bar.position_y = (game_state.player_2.bar.position_y + 2).clamp(10, 54);
     }
 }
